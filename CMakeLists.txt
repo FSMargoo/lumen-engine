@@ -4,13 +4,16 @@ project(Lumen)
 set(CMAKE_CXX_STANDARD 20)
 
 set(LumenCode
-        lumen/inc/test.h
-        lumen/src/test.cpp)
+        lumen/inc/Application.h
+        lumen/src/Application.cpp
+        lumen/Lumen.h
+        lumen/inc/EntryPoint.h
+)
 
 add_library(LumenEngine ${LumenCode})
-add_executable(Sandbox sandbox/src/main.cpp)
+add_executable(Sandbox sandbox/src/Sandbox.cpp)
 
-target_include_directories(LumenEngine PRIVATE lumen/inc)
+target_include_directories(LumenEngine PUBLIC lumen/inc)
 target_include_directories(Sandbox PRIVATE ./)
 
 set_target_properties(LumenEngine
