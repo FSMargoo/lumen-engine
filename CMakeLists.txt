@@ -13,6 +13,12 @@ set(LumenCode
         lumen/inc/Events/Event.h
         lumen/src/Event/Event.cpp
         lumen/inc/Core.h
+        lumen/inc/Events/KeyEvent.h
+        lumen/src/Event/KeyEvent.cpp
+        lumen/inc/Events/MouseEvent.h
+        lumen/src/Event/MouseEvent.cpp
+        lumen/inc/Events/ApplicationEvent.h
+        lumen/src/Event/ApplicationEvent.cpp
 )
 
 add_subdirectory(./thirdparty/spdlog)

@@ -97,9 +97,7 @@ public:
 	using EventFunction = std::function<bool(T&)>;
 
 public:
-	explicit EventDispatcher(Event &E) : _event(E) {
-
-	}
+	explicit EventDispatcher(Event &E);
 
 	/**
 	 * Dispatching an event
@@ -117,6 +115,12 @@ public:
 
 		return false;
 	}
+
+public:
+	/**
+	 * For the spdlog
+	 */
+	std::ostream& operator<<(std::ostream &OStream, const Event &E) const;
 
 private:
 	Event &_event;

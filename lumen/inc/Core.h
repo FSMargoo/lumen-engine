@@ -8,6 +8,8 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include <format>
+
 namespace Lumen {
 #define BIT(x) (1 << x)
 }
