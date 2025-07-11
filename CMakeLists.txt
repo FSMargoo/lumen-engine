@@ -8,7 +8,14 @@ set(LumenCode
         lumen/src/Application.cpp
         lumen/Lumen.h
         lumen/inc/EntryPoint.h
+        lumen/inc/Log.h
+        lumen/src/Log.cpp
+        lumen/inc/Events/Event.h
+        lumen/src/Event/Event.cpp
+        lumen/inc/Core.h
 )
+
+add_subdirectory(./thirdparty/spdlog)
 
 add_library(LumenEngine ${LumenCode})
 add_executable(Sandbox sandbox/src/Sandbox.cpp)
@@ -29,4 +36,5 @@ set_target_properties(Sandbox
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
+target_link_libraries(LumenEngine spdlog)
 target_link_libraries(Sandbox LumenEngine)

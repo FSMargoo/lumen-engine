@@ -17,9 +17,6 @@ int main(int argc, char **argv) {
 
 	Lumen::Log::CoreInfo("Lumen Engine has started!");
 
-	int a = 2;
-	Lumen::Log::Fatal("Hello Var={0}", a);
-
 	auto app = Lumen::CreateApplication();
 	auto code = app->Run();
 
