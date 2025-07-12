@@ -5,8 +5,8 @@
  *      @Date           :   7/11/2025
  */
 
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#ifndef APPLICATION_EVENT_H
+#define APPLICATION_EVENT_H
 
 #include <Events/Event.h>
 

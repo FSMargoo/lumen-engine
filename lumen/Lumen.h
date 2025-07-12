@@ -1,6 +1,6 @@
 ﻿/**
  * Lumen.h:
- *      @Descripiton    :   DESHERE
+ *      @Descripiton    :   The summary head of the Lumen Engine
  *      @Author         :   Margoo(qiuzhengyu@acm.org)
  *      @Date           :   7/10/2025
  */
@@ -9,5 +9,12 @@
 
 #include <Application.h>
 #include <EntryPoint.h>
+
+#include <Events/ApplicationEvent.h>
+#include <Events/KeyEvent.h>
+#include <Events/MouseEvent.h>
+
+#include <Window.h>
+#include <Platform/Windows/WindowsWindow.h>
 
 #endif //LUMEN_H

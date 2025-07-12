@@ -34,7 +34,7 @@ public:
 
 public:
 	EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-	EVENT_CLASS_TYPE(EventType::MouseMoved)
+	EVENT_CLASS_TYPE(MouseMoved)
 
 private:
 	float _mouseX;
@@ -65,7 +65,7 @@ public:
 
 public:
 	EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-	EVENT_CLASS_TYPE(EventType::MouseScrolled)
+	EVENT_CLASS_TYPE(MouseScrolled)
 
 private:
 	float _mouseXOffset;
@@ -101,7 +101,7 @@ public:
 	[[nodiscard]] std::string ToString() const override;
 
 public:
-	EVENT_CLASS_TYPE(EventType::MouseButtonPressed)
+	EVENT_CLASS_TYPE(MouseButtonPressed)
 };
 
 class MouseButtonReleasedEvent : public MouseButtonEvent {
@@ -112,7 +112,7 @@ public:
 	[[nodiscard]] std::string ToString() const override;
 
 public:
-	EVENT_CLASS_TYPE(EventType::MouseButtonReleased)
+	EVENT_CLASS_TYPE(MouseButtonReleased)
 };
 }
 

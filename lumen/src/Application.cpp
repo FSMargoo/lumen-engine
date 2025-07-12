@@ -7,6 +7,9 @@
 #include <Application.h>
 
 namespace Lumen {
+bool Application::OnWindowClose(WindowCloseEvent &E) {
+	_running = false;
 
-
+	return true;
+}
 }

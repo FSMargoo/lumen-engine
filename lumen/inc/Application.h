@@ -7,6 +7,9 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <Events/Event.h>
+#include <Events/ApplicationEvent.h>
+
 #include <memory>
 
 namespace Lumen {
@@ -24,6 +27,12 @@ public:
 	 * @return The status code of the application
 	 */
 	virtual int Run() = 0;
+
+public:
+	bool OnWindowClose(WindowCloseEvent &E);
+
+protected:
+	bool _running = true;
 };
 
 /**

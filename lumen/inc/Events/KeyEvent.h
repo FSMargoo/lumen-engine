@@ -42,7 +42,7 @@ public:
 	[[nodiscard]] std::string ToString() const override;
 
 public:
-	EVENT_CLASS_TYPE(EventType::KeyPressed)
+	EVENT_CLASS_TYPE(KeyPressed)
 
 private:
 	int _repeatCount;
@@ -59,7 +59,7 @@ public:
 	[[nodiscard]] std::string ToString() const override;
 
 public:
-	EVENT_CLASS_TYPE(EventType::KeyReleased)
+	EVENT_CLASS_TYPE(KeyReleased)
 };
 }
 

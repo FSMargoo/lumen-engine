@@ -19,9 +19,14 @@ set(LumenCode
         lumen/src/Event/MouseEvent.cpp
         lumen/inc/Events/ApplicationEvent.h
         lumen/src/Event/ApplicationEvent.cpp
+        lumen/inc/Window.h
+        lumen/src/Window.cpp
+        lumen/inc/Platform/Windows/WindowsWindow.h
+        lumen/src/Platform/Windows/WindowsWindow.cpp
 )
 
 add_subdirectory(./thirdparty/spdlog)
+add_subdirectory(./thirdparty/glfw)
 
 add_library(LumenEngine ${LumenCode})
 add_executable(Sandbox sandbox/src/Sandbox.cpp)
@@ -42,5 +47,5 @@ set_target_properties(Sandbox
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
-target_link_libraries(LumenEngine spdlog)
+target_link_libraries(LumenEngine spdlog glfw)
 target_link_libraries(Sandbox LumenEngine)

@@ -11,6 +11,7 @@
 #include <string>
 #include <functional>
 
+#include <Log.h>
 #include <Core.h>
 
 namespace Lumen {
@@ -33,11 +34,11 @@ enum class EventType {
  * The category for an event
  */
 enum EventCategory {
-	None = 0,
+	None                     = 0,
 	EventCategoryApplication = BIT(0),
-	EventCategoryInput = BIT(1),
-	EventCategoryKeyboard = BIT(2),
-	EventCategoryMouse = BIT(3),
+	EventCategoryInput       = BIT(1),
+	EventCategoryKeyboard    = BIT(2),
+	EventCategoryMouse       = BIT(3),
 	EventCategoryMouseButton = BIT(4),
 };
 
@@ -93,8 +94,8 @@ private:
  */
 class EventDispatcher {
 public:
-	template<class T>
-	using EventFunction = std::function<bool(T&)>;
+	template <class T>
+	using EventFunction = std::function<bool(T &)>;
 
 public:
 	explicit EventDispatcher(Event &E);
@@ -105,7 +106,7 @@ public:
 	 * @param Function The dispatch function
 	 * @return If the event was dispathced, returning true, nor false
 	 */
-	template<class T>
+	template <class T>
 	bool Dispatch(EventFunction<T> Function) {
 		if (_event.GetEventType() == T::GetStaticType()) {
 			_event._handled = Function(*static_cast<T *>(&_event));
@@ -116,17 +117,11 @@ public:
 		return false;
 	}
 
-public:
-	/**
-	 * For the spdlog
-	 */
-	std::ostream& operator<<(std::ostream &OStream, const Event &E) const;
-
 private:
 	Event &_event;
 };
 
-#define EVENT_CLASS_TYPE(Type) static EventType GetStaticType() { return EventType::##Type; } \
+#define EVENT_CLASS_TYPE(Type) static EventType GetStaticType() { return EventType::Type; } \
 		virtual EventType GetEventType() const override { return GetStaticType(); } \
 		virtual const char *GetName() const override { return #Type; }
 
