@@ -8,6 +8,21 @@
 
 #include <memory>
 
+class ExampleLayer : public Lumen::Layer {
+public:
+	ExampleLayer()
+		: Layer("ExampleLayer") {
+	}
+
+public:
+	void OnUpdate() override {
+		Lumen::Log::Info("ExampleLayer::OnUpdate");
+	}
+	void OnEvent(Lumen::Event& e) override {
+		Lumen::Log::Info("ExampleLayer::OnEvent, {}", e.ToString());
+	}
+};
+
 class Sandbox : public Lumen::Application {
 public:
 	Sandbox() {
@@ -15,21 +30,23 @@ public:
 		_window->SetEventCallback([this]<typename T0>(T0 &&PH1) {
 			OnEvent(std::forward<T0>(PH1));
 		});
+
+		PushLayer(new ExampleLayer());
 	}
 
 	~Sandbox() override = default;
 
 public:
-	void OnEvent(Lumen::Event &E) {
-		Lumen::EventDispatcher dispatcher(E);
-		dispatcher.Dispatch<Lumen::WindowCloseEvent>(
-			std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
+	void OnEvent(Lumen::Event &E) override {
+		Application::OnEvent(E);
 
 		Lumen::Log::Trace("{0}", E.ToString());
 	}
 
 	int Run() override {
 		while (_running) {
+			Application::OnUpdate();
+
 			_window->OnUpdate();
 		}
 

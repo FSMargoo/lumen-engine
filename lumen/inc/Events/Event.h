@@ -82,6 +82,10 @@ public:
 		return GetCategory() & Category;
 	}
 
+	[[nodiscard]] bool IsHandled() const {
+		return _handled;
+	}
+
 protected:
 	bool _handled = false;
 

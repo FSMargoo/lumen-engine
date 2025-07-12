@@ -10,6 +10,8 @@
 #include <Events/Event.h>
 #include <Events/ApplicationEvent.h>
 
+#include <LayerStack.h>
+
 #include <memory>
 
 namespace Lumen {
@@ -19,6 +21,7 @@ namespace Lumen {
 class Application {
 public:
 	Application() = default;
+
 	virtual ~Application() = default;
 
 public:
@@ -29,17 +32,28 @@ public:
 	virtual int Run() = 0;
 
 public:
+	void PushLayer(Layer *Layer);
+
+	void PushOverlay(Layer *Overlay);
+
+public:
 	bool OnWindowClose(WindowCloseEvent &E);
+
+public:
+	virtual void OnEvent(Event &E);
+	virtual void OnUpdate();
 
 protected:
 	bool _running = true;
+
+	LayerStack _layerStack;
 };
 
 /**
- * This function should be declared by client
+ * Client should declare this function
  * @return The application that created
  */
-Lumen::Application* CreateApplication();
+Lumen::Application *CreateApplication();
 }
 
 #endif //APPLICATION_H

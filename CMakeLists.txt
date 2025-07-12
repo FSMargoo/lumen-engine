@@ -23,6 +23,10 @@ set(LumenCode
         lumen/src/Window.cpp
         lumen/inc/Platform/Windows/WindowsWindow.h
         lumen/src/Platform/Windows/WindowsWindow.cpp
+        lumen/inc/Layer.h
+        lumen/src/Layer.cpp
+        lumen/inc/LayerStack.h
+        lumen/src/LayerStack.cpp
 )
 
 add_subdirectory(./thirdparty/spdlog)
