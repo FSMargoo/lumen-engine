@@ -7,6 +7,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <Window.h>
+
 #include <Events/Event.h>
 #include <Events/ApplicationEvent.h>
 
@@ -37,11 +39,17 @@ public:
 	void PushOverlay(Layer *Overlay);
 
 public:
+	virtual Window* GetWindow() = 0;
+
+public:
 	bool OnWindowClose(WindowCloseEvent &E);
 
 public:
 	virtual void OnEvent(Event &E);
 	virtual void OnUpdate();
+
+public:
+	static Application *App;
 
 protected:
 	bool _running = true;

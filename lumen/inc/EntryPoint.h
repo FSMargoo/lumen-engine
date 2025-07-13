@@ -4,6 +4,7 @@
  *      @Author         :   Margoo(qiuzhengyu@acm.org)
  *      @Date           :   7/10/2025
  */
+
 #ifndef ENTRYPOINT_H
 #define ENTRYPOINT_H
 
@@ -17,10 +18,10 @@ int main(int argc, char **argv) {
 
 	Lumen::Log::CoreInfo("Lumen Engine has started!");
 
-	auto app = Lumen::CreateApplication();
-	auto code = app->Run();
+	Lumen::Application::App = Lumen::CreateApplication();
+	auto code = Lumen::Application::App->Run();
 
-	delete app;
+	delete Lumen::Application::App;
 
 	return code;
 }

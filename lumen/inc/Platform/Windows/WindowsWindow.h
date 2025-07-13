@@ -37,6 +37,14 @@ public:
 
 	bool IsVSync() const override;
 
+public:
+	[[nodiscard]] void *GetNativeWindow() const override {
+		return GetGLFWWindow();
+	}
+	[[nodiscard]] GLFWwindow *GetGLFWWindow() const {
+		return _window;
+	}
+
 private:
 	void Init(const WindowProperties &Property);
 

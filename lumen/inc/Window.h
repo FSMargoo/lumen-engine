@@ -8,6 +8,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "GLFW/glfw3.h"
+
 #include <Events/Event.h>
 #include <Core.h>
 
@@ -39,6 +41,9 @@ public:
 	virtual void SetEventCallback(const EventCallBack &Callback) = 0;
 	virtual void SetVSync(bool Enabled) = 0;
 	[[nodiscard]] virtual bool IsVSync() const = 0;
+
+public:
+	virtual void *GetNativeWindow() const = 0;
 
 public:
 	static Window *Create(const WindowProperties &Properties);

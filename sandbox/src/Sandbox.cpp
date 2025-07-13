@@ -16,10 +16,10 @@ public:
 
 public:
 	void OnUpdate() override {
-		Lumen::Log::Info("ExampleLayer::OnUpdate");
+
 	}
 	void OnEvent(Lumen::Event& e) override {
-		Lumen::Log::Info("ExampleLayer::OnEvent, {}", e.ToString());
+
 	}
 };
 
@@ -32,6 +32,7 @@ public:
 		});
 
 		PushLayer(new ExampleLayer());
+		PushLayer(new Lumen::ImGUILayer());
 	}
 
 	~Sandbox() override = default;
@@ -39,18 +40,24 @@ public:
 public:
 	void OnEvent(Lumen::Event &E) override {
 		Application::OnEvent(E);
-
-		Lumen::Log::Trace("{0}", E.ToString());
 	}
 
 	int Run() override {
 		while (_running) {
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 			Application::OnUpdate();
 
 			_window->OnUpdate();
 		}
 
 		return 0;
+	}
+
+public:
+	Lumen::Window* GetWindow() override {
+		return _window.get();
 	}
 
 private:

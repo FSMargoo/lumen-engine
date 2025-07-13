@@ -4,6 +4,8 @@
  *      @Date           :   7/11/2025
  */
 
+#include "glad/glad.h"
+
 #include <Platform/Windows/WindowsWindow.h>
 
 namespace Lumen {
@@ -46,6 +48,9 @@ void WindowsWindow::Init(const WindowProperties &Property) {
 	_window = glfwCreateWindow(_data.Width, _data.Height, _data.Title.c_str(), nullptr, nullptr);
 	glfwMakeContextCurrent(_window);
 	glfwSetWindowUserPointer(_window, &_data);
+
+	int status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
+	LUMEN_CORE_ASSERT(status, "Could not initialize GLAD!");
 
 	SetVSync(true);
 

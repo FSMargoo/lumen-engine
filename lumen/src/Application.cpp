@@ -7,6 +7,7 @@
 #include <Application.h>
 
 namespace Lumen {
+Application *Application::App;
 void Application::OnEvent(Event &E) {
 	EventDispatcher dispatcher(E);
 	dispatcher.Dispatch<WindowCloseEvent>(std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
